@@ -1,0 +1,20 @@
+[
+  {
+    "id": null,
+    "feedTime": "2022-05-05T15:48:29.761195",
+    "food": "Grains",
+    "place": "Pond",
+    "numberOfDucks": 2,
+    "foodType": "Duck Food",
+    "foodWeight": 2.0
+  },
+  {
+    "id": null,
+    "feedTime": "2022-05-05T15:48:29.761854",
+    "food": "Grains",
+    "place": "Pond",
+    "numberOfDucks": 5,
+    "foodType": "Duck Food",
+    "foodWeight": 2.5
+  }
+]
