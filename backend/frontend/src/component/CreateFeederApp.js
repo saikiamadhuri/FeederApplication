@@ -30,7 +30,7 @@ export default function Create() {
     }
     
     const postData = () => {
-        axios.post(`http://localhost:8081/feeder/save`, {
+        axios.post(`http://localhost:8080/feeder/save`, {
             food,
             place,
             numberOfDucks,

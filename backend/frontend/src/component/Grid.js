@@ -24,7 +24,7 @@ export default function Grid() {
 
   useEffect(() => {
     async function getResults() {
-      const results = await axios('http://localhost:8081/feeder/fetch')
+      const results = await axios('http://localhost:8080/feeder/fetch')
       setRowData(results.data);
     }
     getResults()
