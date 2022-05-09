@@ -1,5 +1,5 @@
 # FeederApplication
- This application is used to record data for ducks fed in a park by a scientist. The recorded data can also be viewed and extracted on a separate page.
+ This application is used to record data for ducks fed in a park by people visiting the park. The recorded data can also be viewed and extracted on a separate page.
  
 
  Technologies used -
@@ -17,7 +17,10 @@ form which is rendered using ag-grid. The reason ag-grid has been used is so tha
 from the grid which also has other features such as filter, sorting, etc., for easy handling of the data.
 React Router has been used for better navigation between the pages.
 
-There are 2 restful APIs exposed, one for save and one for fetch. Integration test cases have been written for both the controller methods.
+There are 2 restful APIs exposed, one for save and one for fetch. Integration test cases have been written for both the controller methods. 
+A scheduler method has been added to run at 6pm everday to capture the feeding data by an old lady with the same data values, so that
+she doesn't have to use the application everyday.
+
 
 H2 database is used, since the data extraction and reporting can be achieved with the ag-grid on the view functionality.
 
