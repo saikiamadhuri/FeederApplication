@@ -4,6 +4,7 @@ import "ag-grid-enterprise";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -13,30 +14,29 @@ export default function Grid() {
     flex: 1
   };
 
-  const [APIData, setAPIData] = useState([]);
-    useEffect(() => {
-        axios.get(`http://localhost:8080/feeder/fetch`)
-            .then((response) => {
-                console.log(response.data)
-                setAPIData(response.data);
-            })
-    }, []);
+  const navigate = useNavigate();
 
-
-    const getData = () => {
-        axios.get(`http://localhost:8080/feeder/fetch`)
-            .then((getData) => {
-                setAPIData(getData.data);
-            })
+    const handleClick = () => {
+        navigate('/');
     }
 
+  const [rowData, setRowData] = useState([]);
+
+  useEffect(() => {
+    async function getResults() {
+      const results = await axios('http://localhost:8081/feeder/fetch')
+      setRowData(results.data);
+    }
+    getResults()
+  }, []);
+
   const [columnDefs, setColumnDefs] = useState([
-    { field: 'time', header: 'Time', minWidth: 150 },
-    { field: 'food', header: 'Food', maxWidth: 90 },
-    { field: 'place', header: 'Place', minWidth: 150 },
-    { field: 'numberOfDucks', header: 'Number Of Ducks', maxWidth: 90 },
-    { field: 'foodType', header: 'Food Type', minWidth: 150 },
-    { field: 'quantity', header: 'Quantity (In grams)', minWidth: 150 }
+    { field: 'feedTime', headerName: 'Time', valueFormatter: (data) => { return new Date(data.data.feedTime)}},
+    { field: 'food', headerName: 'Food' },
+    { field: 'place', headerName: 'Place' },
+    { field: 'numberOfDucks', headerName: 'Number Of Ducks' },
+    { field: 'foodType', headerName: 'Food Type' },
+    { field: 'foodWeight', headerName: 'Quantity (In grams)' }
 ]);
 
 
@@ -49,10 +49,11 @@ export default function Grid() {
       }}
       className="ag-theme-alpine-dark"
     >
+      <h2>Duck Feeding Information</h2>
       <AgGridReact
         applyColumnDefOrder={true}
         defaultColDef={defaultColDef}
-        rowData={APIData.data}
+        rowData={rowData}
         columnDefs={columnDefs}
         sideBar={{
           toolPanels: [
@@ -70,6 +71,9 @@ export default function Grid() {
           ]
         }}
       />
+      
+      <a className="link-color" href="" onClick={handleClick}>Go Back</a><br/>
+     
     </div>
   );
 }

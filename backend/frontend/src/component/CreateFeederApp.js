@@ -11,8 +11,8 @@ export default function Create() {
     const [place, setPlace] = useState('');
     const [numberOfDucks, setNumber] = useState('');
     const [foodType, setType] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [time, setTime] = useState(new Date());
+    const [foodWeight, setQuantity] = useState('');
+    const [feedTime, setTime] = useState(new Date());
     
     const navigate = useNavigate();
 
@@ -24,14 +24,19 @@ export default function Create() {
         navigate('/redirect');
     
     }
+
+    const handleView = () => {
+        navigate('/view');
+    }
     
     const postData = () => {
-        axios.post(`http://localhost:8080/feeder/save`, {
+        axios.post(`http://localhost:8081/feeder/save`, {
             food,
             place,
             numberOfDucks,
             foodType,
-            quantity
+            foodWeight,
+            feedTime
         }).then((response) =>{
                 console.log(response.data);
         }, (error) => {
@@ -44,29 +49,30 @@ export default function Create() {
             <Form className="create-form">
                 <FormGroup>
                     <label className="text-center">Time Of Feed </label>
-                    <DateTimePicker onChange={(e) => setTime(e.target.value)} value={time}/>
+                    <DateTimePicker onChange={(e) => setTime(e.target.value)} value={feedTime}/>
                 </FormGroup>
                 <FormGroup>
                     <label className="text-center">Food </label>
-                    <input placeholder='Food' onChange={(e) => setFood(e.target.value)}/>
+                    <input placeholder='Food' onChange={(e) => setFood(e.target.value)} value={food}/>
                 </FormGroup>
                 <FormGroup>
                     <label>Place </label>
-                    <input placeholder='Place' onChange={(e) => setPlace(e.target.value)}/>
+                    <input placeholder='Place' onChange={(e) => setPlace(e.target.value)} value={place}/>
                 </FormGroup>
                 <FormGroup>
                     <label>Number Of Ducks </label>
-                    <input placeholder='Number Of Ducks' onChange={(e) => setNumber(e.target.value)}/>
+                    <input placeholder='Number Of Ducks' onChange={(e) => setNumber(e.target.value)} value={numberOfDucks}/>
                 </FormGroup>
                 <FormGroup>
                     <label>Type Of Food </label>
-                    <input placeholder='Type Of Food' onChange={(e) => setType(e.target.value)}/>
+                    <input placeholder='Type Of Food' onChange={(e) => setType(e.target.value)} value={foodType}/>
                 </FormGroup>
                 <FormGroup>
                     <label>Quantity (In grams) </label>
-                    <input placeholder='Quantity (In grams)' onChange={(e) => setQuantity(e.target.value)}/>
+                    <input placeholder='Quantity (In grams)' onChange={(e) => setQuantity(e.target.value)} value={foodWeight}/>
                 </FormGroup>
-                <Button onClick={handleSubmit} type='submit'>Submit</Button>
+                <Button color="primary" onClick={handleSubmit} type='submit'>Submit</Button>
+                <Button color="secondary" onClick={handleView} type='view'>View</Button>
             </Form>
         </div>
     )

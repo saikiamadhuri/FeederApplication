@@ -25,24 +25,6 @@ public class FeederDataService {
     }
 
     public List<FeederData> fetchDuckFeedingInfo() {
-//        List<FeederData> feederDataList = new ArrayList<>();
-//        FeederData feederData1 = new FeederData();
-//        feederData1.setNumberOfDucks(2);
-//        feederData1.setFeedTime(LocalDateTime.now());
-//        feederData1.setFood("Grains");
-//        feederData1.setFoodType("Duck Food");
-//        feederData1.setFoodWeight(2);
-//        feederData1.setPlace("Pond");
-//        feederDataList.add(feederData1);
-//        FeederData feederData2 = new FeederData();
-//        feederData2.setNumberOfDucks(5);
-//        feederData2.setFeedTime(LocalDateTime.now());
-//        feederData2.setFood("Grains");
-//        feederData2.setFoodType("Duck Food");
-//        feederData2.setFoodWeight(2.5);
-//        feederData2.setPlace("Pond");
-//        feederDataList.add(feederData2);
-//        return feederDataList;
         return feederDataRepository.findAll();
     }
 }

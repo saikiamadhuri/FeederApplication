@@ -8,10 +8,15 @@ export default function Redirect() {
         navigate('/');
     }
 
+    const handleViewClick = () => {
+        navigate('/view');
+    }
+
     return(
         <div>
         <h2>Thank you. Your response has been recorded</h2>
-        <a href="" onClick={handleClick}>Go Back</a>
+        <a className="link-color" href="" onClick={handleClick}>Go Back</a><br/>
+        <a className="link-color" href="" onClick={handleViewClick}>View</a>
         </div>
     )
 }

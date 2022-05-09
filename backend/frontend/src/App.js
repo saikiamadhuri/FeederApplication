@@ -23,7 +23,9 @@ class App extends Component {
             <Route path="/"
                     element={ <CreateFeederApp /> }/>
              <Route path="/redirect"
-                    element={ <Redirect /> }/>            
+                    element={ <Redirect /> }/>
+              <Route path="/view"
+                    element={ <Grid /> }/>            
           </Routes>
         </Router>
     </div>
