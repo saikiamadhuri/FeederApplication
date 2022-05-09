@@ -30,7 +30,7 @@ export default function Create() {
     }
     
     const postData = () => {
-        axios.post(`http://localhost:8080/feeder/save`, {
+        axios.post(`https://feeder-application.herokuapp.com/feeder/save`, {
             food,
             place,
             numberOfDucks,
